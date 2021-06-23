@@ -55,8 +55,7 @@ router.get('/city/:id', catchAsync(async (req, res)=>{
 
 router.get('/map',validatemap, catchAsync( async (req, res)=>{
     if(Object.keys(req.query).length === 1){
-        const a = new Date()
-        const g = new Date(a)
+        const g = new Date()
         y = String(g.getFullYear())
         m = ("0" + String(g.getMonth()+1)).slice(-2)
         d = ("0" + String(g.getDate())).slice(-2)

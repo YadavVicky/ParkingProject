@@ -1,0 +1,68 @@
+<% layout('layouts/boilerplate') %>
+<header>
+  <div class="row py-5 px-4">
+    <div class="col-md-8 mx-auto">
+        <!-- Profile widget -->
+        <div class="bg-white shadow rounded overflow-hidden">
+            <div class="px-4 pt-0 pb-4 cover" style="background: #800080;">
+                <div class="media align-items-end profile-head">
+                    <div class="profile mr-3"><img src="https://res.cloudinary.com/dkrtupzet/image/upload/v1624187420/male_2_sdt63e.png" alt="..." width="130" class="rounded mb-2 img-thumbnail"></div>
+                    <div class="media-body mb-5 text-white">
+                        <h4 class="mt-0 mb-2"><%= currentUser.name %></h4>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-light p-4 d-flex justify-content-end text-center">
+                <ul class="list-inline mb-0">
+                    <li class="list-inline-item">
+                        <h5 class="font-weight-bold mb-0 d-block"><%= details.length %></h5><small class="text-muted"> <i class="fas fa-image mr-1"></i>Total Bookings</small>
+                    </li>
+                </ul>
+            </div>
+            <div class="px-4 py-3">
+                <h5 class="mb-0">Your Details</h5>
+                <div class="p-4 rounded shadow-sm bg-light">
+                    <p class="font-italic mb-0">Email: <%= currentUser.username %></p>
+                    <p class="font-italic mb-0">Phone: <%= currentUser.phone %></p>
+                </div>
+            </div>
+            <div class="py-4 px-4">
+              <% var d = new Date().getTime() %>
+              <section class="row row-cols-xs-1 row-cols-sm-1 row-cols-md-1 row-cols-lg-2 mb-3 text-center">
+               <% for(var i = 0; i<details.length; i++){ %> 
+                <div class="col-6">
+                  <div class="card mb-4 rounded-3 shadow-sm">
+                    <div class="card-header py-3 text-start">
+                      <h5 class="my-0 fw-normal">Date of Booking: <%= UDT[i][0] %> </h5>
+                    </div>
+                    <div class="card-body">
+                      <h3 class="card-title pricing-card-title"><%= O[i][0] %></h3>
+                      <h5 class="card-title pricing-card-title"><%= O[i][1] %></h5>
+                      <ul class="list-unstyled mt-3 mb-4 text-start">
+                        <li>Vehicle Number: <%= O[i][3] %></li>
+                        <li>Date In: <%= UDT[i][2] %></li>
+                        <li>Time In: <%= UDT[i][3] %></li>
+                        <li>Date Out: <%= UDT[i][4] %></li>
+                        <li>Time Out: <%= UDT[i][5] %></li>
+                        <li>Slot: <%= O[i][2]  %></li>
+                      </ul>
+                      <% if(d < O[i][6]){ %>
+                      <form action="/booking/<%=O[i][4]%>?_method=DELETE" method="POST">
+                      <input type="hidden" name="Uid" value="<%= currentUser.id %>">
+                      <input type="hidden" name="Oid" value="<%= O[i][5] %>">
+                      <button type="submit" class="w-100 btn btn-lg btn-danger">Cancel Booking</button>
+                      <% }else{ if(d > O[i][7]){ %>
+                      <a href="#" class="w-100 btn btn-lg btn-primary">Thank You</a>
+                        <%} }%>
+                    </form>
+                    </div>
+                  </div>
+                </div>
+                <% } %>
+            </section>
+            </div>
+        </div>
+    </div>
+</div>
+
+</header>

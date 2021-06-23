@@ -1,0 +1,234 @@
+body {
+    background-color: #f6f6f6;
+}
+.exa {
+    overflow-y: scroll;
+}
+.exa::-webkit-scrollbar {
+    display: none;
+}
+
+
+.input form {
+    border-radius: 20%;
+}
+.navbar {
+
+    position: absolute;
+    background: transparent !important;
+    height: 60px;
+    width: 100%;
+    z-index: 10;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+.nav-link{
+    color: whitesmoke !important;
+    padding: 10px;
+}
+.vgvg{
+    background: transparent!important;
+    width: 60px;
+    height: 44px;
+    border: none;
+}
+
+.qaz{
+    height: -webkit-fill-available !important;
+    width: 25px!important;
+}
+
+.rty {
+    width: 10px;
+    height: 10px;
+    object-fit: cover;
+}
+
+.plm {
+    transition: all 0.5s ease;
+    font-size: 1em;
+    
+}
+.plm:hover {
+    text-shadow: 0 0 5px red;
+    transform: scale(1.1,1.1);
+}
+
+li > a {
+    color: antiquewhite;
+    text-decoration: none;
+    color: #000;
+    
+}
+
+li > a::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: antiquewhite;
+    visibility: hidden;
+    transform: scaleX(0);
+    transition: all 0.3s ease-in-out 0s;
+
+}
+
+.input-group>.form-control:focus {
+    box-shadow: none;
+
+}
+
+.aezajj{
+    border-radius: 24px;
+}
+form:hover {
+    box-shadow: 0 0 10px #fff;
+}
+.form {
+    margin-top: 20px;
+}
+
+/* .input-group{
+    border-radius: 28px;
+} */
+.btn-outline-primary {
+     border: none;
+     border-left: 1px solid black;
+    background-color: rgba(0,212,255,1);
+
+}
+
+.input-group>.form-control {
+    margin-right: 5px;
+}
+.btn-outline-primary:focus {
+    box-shadow: none !important;
+}
+
+.d-block {
+    object-fit: cover;
+}
+
+.hide {
+    display: none;
+}
+
+.search-bar {
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    width: 100%;
+    
+}
+
+.tyu {
+    height: 300px;
+}
+
+#qwerty{
+    letter-spacing: 2px;
+}
+#parCare {
+     font-weight: bold;
+     letter-spacing: 2px;
+     padding-left: 10%;
+   }
+
+.peopleCarouselImg img {
+    width: auto;
+    max-height: 100vh;
+    background-size: cover;
+  }
+
+.offcanvas-header {
+    display: none;
+}
+
+.opca {
+    opacity: 1;
+}
+
+#pqq {
+    margin-top: 20px;
+}
+.pqqq{
+    box-shadow: 1px 2px gainsboro;
+}
+
+#tuy{
+    max-width: 100%;
+    min-height: 300px;
+}
+.card-title{
+    text-align: center;
+}
+
+.card {
+    margin-top: 20px;
+}
+
+.glow {
+    animation: glow 1200ms ease-out infinite alternate;
+}
+
+.glow2 {
+    animation: glow2 1200ms ease-out infinite alternate;
+}
+
+.glow1 {
+    animation: glow1 1200ms ease-out infinite alternate;
+}
+
+.lol {
+    font-weight: 500;
+    padding: 5px;
+    color: whitesmoke;
+    justify-content: space-between;
+    transition: all 0.1s;
+}
+
+.lol:hover {
+    text-decoration: none;
+    background-color: white;
+    color: black;
+}
+
+.card-text {
+    margin: auto;
+}
+
+.fdf {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+@keyframes glow1 {
+    0%{
+        text-shadow: 0 0 5px orange, 0 0 7px orange;
+    }
+    100%{
+        text-shadow: 0 0 2px orange;
+    }
+}
+
+@keyframes glow2 {
+    0%{
+        text-shadow: 0 0 5px limegreen, 0 0 7px lime;
+    }
+    100%{
+        text-shadow: 0 0 2px limegreen;
+    }
+
+}
+
+@keyframes glow {
+    0%{
+        text-shadow: 0 0 5px whitesmoke, 0 0 7px whitesmoke;
+    }
+    100%{
+        text-shadow: 0 0 2px whitesmoke;
+    }
+}

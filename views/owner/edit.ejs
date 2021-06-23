@@ -1,0 +1,12 @@
+<% layout('layouts/boilerplate') %>
+    <h1>Edit details</h1>
+    <form action="/owner/<%= parking._id %>?_method=PUT" method="POST">
+        <input type="text" name="city[name]" placeholder="Name of Parking Lot" value="<%= parking.name %>">
+        <input type="text" name="city[owner]" placeholder="Name of Owner" value="<%= parking.owner %>">
+        <!-- <input type="number" name="city[parkingSpot]" placeholder="no. of spaces" value="<%= parking.parkingSpot %>"> -->
+        <input type="number" name="city[cost]" placeholder="cost" value="<%= parking.cost %>">
+        <input type="text" name="city[location]" placeholder="Location" value="<%= parking.location %>">
+        <button>Update Parking Lot</button>
+    </form>
+
+    <a href="/owner">Go back</a>

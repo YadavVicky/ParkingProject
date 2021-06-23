@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAPS</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+        integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="/css/general.css">
+    <link type="text/css" rel="stylesheet" href="/css/map.css">
+    <script src="/js/user/main.js"></script>
+    <link rel="shortcut icon" type="image/png" href="https://res.cloudinary.com/dkrtupzet/image/upload/v1624187931/android-chrome-192x192_mbcgka.png">
+    
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.2.0/mapbox-gl.css' rel='stylesheet' />
+</head>
+<body onload="change1()">
+    
+    <%- include('../partials/nav')  %> 
+    <div class="row">
+        <div class="col-md-4" style="background: #ADA996;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        ">
+            <div>
+                <form action="/map" method="GET">
+                    <div class="form-group backgroundClass">
+                        <label id="mjn" for="location">City</label>
+                        <input class="form-control" type="text" id="a1" name="location" value=<%= l %>>
+                      </div>
+                    <div class="form-group backgroundClass">
+                        <label id="mjn" for="Date">Date In</label>
+                        <input class="form-control" type="date" id="a2" name="Date1"  value=<%= q %> oninput="change1()">
+                      </div>
+                      <div class="row backgroundClass mb-3">
+                        <label id="mjn" for="time">Time-In</label>
+                        <div class="col-6">
+                        <select class="form-select form-select-sm" name="hr1" id="a3" aria-label=".form-select-sm example" oninput="change1()">
+                            <% for(var i = 0; i < 24; i++){ %>
+                                <% if(i === Number(J[0])){ %>
+                                    <option value="<%=i%>" selected> <%=i%> </option>
+                                <% }else{ %>
+                                    <option value="<%=i%>"> <%=i%> </option>
+                            <% } } %>
+                          </select>
+                        </div>
+                        <% min11 = ["00","15", "30", "45"] %>
+                        <div class="col-6">
+                            <select class="form-select form-select-sm" name="min1" id="a4" style="width: 200px;" aria-label=".form-select-sm example" oninput="change1()">
+                                <% for(var k = 0;k < 4; k++){ %>
+                                    <%if(J[1] === min11[k]){ %>
+                                <option value=<%= min11[k] %> selected> <%= min11[k] %> </option>
+                                <%}else{%>
+                                <option value=<%= min11[k] %>> <%= min11[k] %> </option>
+                                <%} }%>
+                                <!-- <option value="30"> 30 </option>
+                                <option value="45"> 45 </option> -->
+                                </select>
+                        </div>
+                            </div>
+                      <div class="form-group backgroundClass">
+                        <label id="mjn" for="Date">Date Out</label>
+                        <input class="form-control" type="date" id="a5" name="Date2"  value=<%= h %> oninput="change1()">
+                      </div>
+                      <div class="row backgroundClass mb-3">
+                        <label id="mjn" for="time">Time-Out</label>
+                        <div class="col-6">
+                        <select class="form-select form-select-sm" name="hr2" id="a6" aria-label=".form-select-sm example" oninput="change1()">
+                            <% for(var i = 0; i < 24; i++){ %>
+                                <% if(i === (Number(K[0]))){ %>
+                                    <option value="<%=i%>" selected> <%=i%> </option>
+                                <% }else{ %>
+                                    <option value="<%=i%>"> <%=i%> </option>
+                            <% } } %>
+                          </select>
+                        </div>
+                        <div class="col-6">
+                            <select class="form-select form-select-sm" name="min2" id="a7" style="width: 200px;" aria-label=".form-select-sm example" oninput="change1()">
+                                <% for(var k = 0;k < 4; k++){ %>
+                                    <%if(K[1] === min11[k]){ %>
+                                <option value=<%= min11[k] %> selected> <%= min11[k] %> </option>
+                                <%}else{%>
+                                <option value=<%= min11[k] %>> <%= min11[k] %> </option>
+                                <%} }%>
+                                </select>
+                        </div>
+                            </div>
+                        <div class="backgroundClass">
+                            <button class="btn btn-success">Update Search</button>
+                        </div>
+                </form>
+            </div>
+                                    <input id="b1" type="hidden" name="G[location1]">
+                                    <input id="b2" type="hidden" name="G[date1]">
+                                    <input id="b3" type="hidden" name="G[hr1]">
+                                    <input id="b4" type="hidden" name="G[min1]">
+                                    <input id="b5" type="hidden" name="G[date2]">
+                                    <input id="b6" type="hidden" name="G[hr2]">
+                                    <input id="b7" type="hidden" name="G[min2]">
+            
+            <div class="backgroundClass" style="position: relative;">
+                <p>List of all Parkings</p>
+                <ul class="list-group" style="list-style-type: none;">
+                    <% i = 0%>
+                    <% j = -1%>
+                    <% for(let park of city[0].ownerList){  %> 
+                        <% i++ %>
+                        <% j++ %>
+                        <li> 
+                            <div class="card text-dark border-primary">
+                            <!-- <div class="card-header"></div> -->
+                            <div class="row card-body" style="max-height: 70px;">
+                                <div class="col"> name:- <%= park.parkingname  %></div>
+                                <div class="col"> space available: <%= (Number(park.spots) - slota[j])   %> </div>
+                                <div class="col">
+                                    <form action="/booking/<%= park._id %>" method="GET">
+                                    <input id="c1<%= String(i)  %>" type="hidden" name="G[location1]">
+                                    <input id="c2<%= String(i)  %>" type="hidden" name="G[date1]">
+                                    <input id="c3<%= String(i)  %>" type="hidden" name="G[hr1]">
+                                    <input id="c4<%= String(i)  %>" type="hidden" name="G[min1]">
+                                    <input id="c5<%= String(i)  %>" type="hidden" name="G[date2]">
+                                    <input id="c6<%= String(i)  %>" type="hidden" name="G[hr2]">
+                                    <input id="c7<%= String(i)  %>" type="hidden" name="G[min2]">
+                                    <button id="<%= i %>" onclick="change2(this.id)" class="btn btn-success">Book</button>
+                                </form></div>
+                            </div> </li>
+                    <% } %> 
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-8">
+            <div id="map" style="height: 90vh;"></div>
+        </div>
+    
+        <script>
+           const city =  <%- JSON.stringify(city) %>
+        </script>
+        <script src="/js/map.js"></script>
+
+    </div>
+    <script>
+        function change1(){
+            document.getElementById("b1").value = document.getElementById("a1").value  
+            document.getElementById("b2").value = document.getElementById("a2").value
+            document.getElementById("b3").value = document.getElementById("a3").value
+            document.getElementById("b4").value = document.getElementById("a4").value
+            document.getElementById("b5").value = document.getElementById("a5").value
+            document.getElementById("b6").value = document.getElementById("a6").value
+            document.getElementById("b7").value = document.getElementById("a7").value
+        }
+        function change2(kk){
+            document.getElementById("c1"+kk).value = document.getElementById("b1").value  
+            document.getElementById("c2"+kk).value = document.getElementById("b2").value
+            document.getElementById("c3"+kk).value = document.getElementById("b3").value
+            document.getElementById("c4"+kk).value = document.getElementById("b4").value
+            document.getElementById("c5"+kk).value = document.getElementById("b5").value
+            document.getElementById("c6"+kk).value = document.getElementById("b6").value
+            document.getElementById("c7"+kk).value = document.getElementById("b7").value
+        }
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    </body>
+</html>

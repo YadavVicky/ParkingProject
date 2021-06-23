@@ -1,0 +1,99 @@
+@media only screen and (min-width: 320px) and (max-width: 480px){
+    .carousel-control-prev, .carousel-control-next {
+        display: none;
+    }
+    .carousel-inner {
+        height: auto !important; 
+    }
+    .tuy {
+        width: 100%;
+        height: auto;
+    }
+   
+}
+
+@media only screen and (max-width: 768px){
+    form {
+        display: block;
+        width: 70%;
+        margin: 0 auto;
+    }
+
+    form input {
+        font-size: 14px !important;
+    }
+
+    .lol {
+        font-size: 14px !important;
+    }
+
+    .tuy {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media only screen and (max-width: 900px){
+    .carousel-inner {
+        height: auto !important; 
+    }
+
+    form {
+        display: block;
+        width: 80%;
+        margin: 5% auto;
+        /* margin-top: 5%; */
+    }
+
+    .offcanvas-header{
+        display: block;
+    }
+
+    .navbar-collapse {
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 100%;
+        width: 100%;
+        padding-right: 1rem;
+        padding-left: 1rem;
+        overflow-y: auto;
+        visibility: hidden;
+        transform: translateX(-100%);
+        background-color: #000;
+
+    }
+    .navbar-collapse.show {
+        visibility: visible;
+        background: rgb(2,0,36);
+        background: -moz-linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(220,217,3,1) 0%, rgba(0,212,255,1) 100%);
+        background: -webkit-linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(220,217,3,1) 0%, rgba(0,212,255,1) 100%);
+        background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(220,217,3,1) 0%, rgba(0,212,255,1) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#020024",endColorstr="#00d4ff",GradientType=1);;
+        max-height: 100%;
+        width: 40%;
+    }
+
+    .btn-close {
+        border-color: transparent;
+        color: whitesmoke;
+        font-size: 22px;
+        background: transparent;
+    }
+
+    .navbar-dark .navbar-nav .nav-link {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .tuy {
+        width: 100%;
+        height: auto;
+    }
+
+}
+
+@media only screen and (min-width: 1200px){
+    
+
+}

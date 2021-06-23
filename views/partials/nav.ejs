@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a id="parCare" class="navbar-brand glow" href="/"><span class="glow1">par</span><span
+            class="glow">C</span><span class="glow2">are</span></a>
+    <button class="navbar-toggler" data-toggle="collapse" data-trigger="#qwerty">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="qwerty">
+        <div class="offcanvas-header mt-3">
+            <button type="button" class="btn-close float-left"><img class="rty"
+                    src="https://res.cloudinary.com/dkrtupzet/image/upload/v1607506843/times-solid_as2cji.svg"></button>
+            <h5 class="py-2" style="text-align: center; color: teal; font-weight: bolder;">Menu</h5>
+        </div>
+        <ul class="navbar-nav ml-auto" id="aeza">
+            <li class="nav-item">
+                <a href="/city" class="nav-link plm">Cities</a>
+            </li>
+            <li class="nav-item">
+                <a href="/testmap/ghaziabad" class="nav-link plm">Airport</a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="nav-link plm">Stadiums</a>
+            </li>
+            <% if(!currentUser){%> 
+            <li class="nav-item">
+                <a href="/login" class="nav-link plm">Login</a>
+            </li>
+            <li class="nav-item">
+                <a href="/signup" class="nav-link plm">Sign-Up</a>
+            </li>
+            <% } else { %> 
+            <li class="nav-item dropdown"  style="margin-right: 50px;">
+                    <button class="vgvg nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <img class="qaz rty"
+                        src="https://res.cloudinary.com/dkrtupzet/image/upload/v1624192774/person_white_48dp_wvzduh.svg"></button>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown" style="min-width: 0px!important;">
+                      <li><a class="dropdown-item" href="/profile/<%= currentUser.id %>">Profile</a></li>
+                      <li><a class="dropdown-item" href="/logout">LogOut</a></li>
+                    </ul>
+                  </li>
+            <% } %> 
+        </ul>
+    </div>
+</nav>

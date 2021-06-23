@@ -21,7 +21,7 @@
     
     <%- include('../partials/nav')  %> 
     <div class="row">
-        <div class="col-md-4" style="background: #ADA996;  /* fallback for old browsers */
+        <div class="col-lg-4" style="background: #ADA996;  /* fallback for old browsers */
         background: -webkit-linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996);  /* Chrome 10-25, Safari 5.1-6 */
         background: linear-gradient(to right, #EAEAEA, #DBDBDB, #F2F2F2, #ADA996); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
         ">
@@ -37,29 +37,28 @@
                       </div>
                       <div class="row backgroundClass mb-3">
                         <label id="mjn" for="time">Time-In</label>
-                        <div class="col-6">
-                        <select class="form-select form-select-sm" name="hr1" id="a3" aria-label=".form-select-sm example" oninput="change1()">
-                            <% for(var i = 0; i < 24; i++){ %>
-                                <% if(i === Number(J[0])){ %>
-                                    <option value="<%=i%>" selected> <%=i%> </option>
-                                <% }else{ %>
-                                    <option value="<%=i%>"> <%=i%> </option>
-                            <% } } %>
-                          </select>
-                        </div>
-                        <% min11 = ["00","15", "30", "45"] %>
-                        <div class="col-6">
-                            <select class="form-select form-select-sm" name="min1" id="a4" style="width: 200px;" aria-label=".form-select-sm example" oninput="change1()">
+                        <div class="col-6 my-1">
+                            <select class="custom-select mr-sm-2" name="hr1" id="a3" oninput="change1()"> 
+                                <% for(var i = 0; i < 24; i++){ %>
+                                    <% if(i === Number(J[0])){ %>
+                                        <option value="<%=i%>" selected> <%=i%> </option>
+                                    <% }else{ %>
+                                        <option value="<%=i%>"> <%=i%> </option>
+                                <% } } %>
+                            </select>
+                          </div>
+                          <% min11 = ["00","15", "30", "45"] %>
+                          <div class="col-6 my-1">
+                            <select class="custom-select mr-sm-2" name="min1" id="a4" oninput="change1()">
                                 <% for(var k = 0;k < 4; k++){ %>
                                     <%if(J[1] === min11[k]){ %>
                                 <option value=<%= min11[k] %> selected> <%= min11[k] %> </option>
                                 <%}else{%>
                                 <option value=<%= min11[k] %>> <%= min11[k] %> </option>
                                 <%} }%>
-                                <!-- <option value="30"> 30 </option>
-                                <option value="45"> 45 </option> -->
                                 </select>
-                        </div>
+                            </select>
+                          </div>
                             </div>
                       <div class="form-group backgroundClass">
                         <label id="mjn" for="Date">Date Out</label>
@@ -67,26 +66,27 @@
                       </div>
                       <div class="row backgroundClass mb-3">
                         <label id="mjn" for="time">Time-Out</label>
-                        <div class="col-6">
-                        <select class="form-select form-select-sm" name="hr2" id="a6" aria-label=".form-select-sm example" oninput="change1()">
-                            <% for(var i = 0; i < 24; i++){ %>
-                                <% if(i === (Number(K[0]))){ %>
-                                    <option value="<%=i%>" selected> <%=i%> </option>
-                                <% }else{ %>
-                                    <option value="<%=i%>"> <%=i%> </option>
-                            <% } } %>
-                          </select>
-                        </div>
-                        <div class="col-6">
-                            <select class="form-select form-select-sm" name="min2" id="a7" style="width: 200px;" aria-label=".form-select-sm example" oninput="change1()">
+                        <div class="col-6 my-1">
+                            <select class="custom-select mr-sm-2" name="hr2" id="a6" oninput="change1()">
+                                <% for(var i = 0; i < 24; i++){ %>
+                                    <% if(i === (Number(K[0]))){ %>
+                                        <option value="<%=i%>" selected> <%=i%> </option>
+                                    <% }else{ %>
+                                        <option value="<%=i%>"> <%=i%> </option>
+                                <% } } %>
+                            </select>
+                          </div>
+                          <div class="col-6 my-1">
+                            <select class="custom-select mr-sm-2" name="min2" id="a7" oninput="change1()">
                                 <% for(var k = 0;k < 4; k++){ %>
                                     <%if(K[1] === min11[k]){ %>
                                 <option value=<%= min11[k] %> selected> <%= min11[k] %> </option>
                                 <%}else{%>
                                 <option value=<%= min11[k] %>> <%= min11[k] %> </option>
                                 <%} }%>
-                                </select>
-                        </div>
+                            </select>
+                          </div>
+                            </div>
                             </div>
                         <div class="backgroundClass">
                             <button class="btn btn-success">Update Search</button>
@@ -113,9 +113,9 @@
                             <div class="card text-dark border-primary">
                             <!-- <div class="card-header"></div> -->
                             <div class="row card-body" style="max-height: 70px;">
-                                <div class="col"> name:- <%= park.parkingname  %></div>
-                                <div class="col"> space available: <%= (Number(park.spots) - slota[j])   %> </div>
-                                <div class="col">
+                                <div class="col-6"> name:- <%= park.parkingname  %></div>
+                                <div class="col-3"> space: <%= (Number(park.spots) - slota[j])   %> </div>
+                                <div class="col-3">
                                     <form action="/booking/<%= park._id %>" method="GET">
                                     <input id="c1<%= String(i)  %>" type="hidden" name="G[location1]">
                                     <input id="c2<%= String(i)  %>" type="hidden" name="G[date1]">
@@ -131,7 +131,7 @@
                 </ul>
             </div>
         </div>
-        <div class="col-md-8">
+        <div class="col-lg-8">
             <div id="map" style="height: 90vh;"></div>
         </div>
     

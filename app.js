@@ -102,7 +102,8 @@ app.use((err, req, res, next)=>{
 //######################
 //        Server
 //######################
+const port = process.env.PORT
 
-app.listen(3600, ()=>{
+app.listen(port, ()=>{
     console.log("Serving on port 3000");
 })

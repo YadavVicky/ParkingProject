@@ -16,7 +16,7 @@ const { isLoggedIn } = require('../utils/isLoggedIn');
 
 const validateParking = (req, res, next) => {
     const { VNumber, slot } = req.body
-    const { error } = parkingLotSchema.validate({'vehicle': VNumber, 'slot': slot })
+    const { error } = parkingLotSchema.validate({'vehicle': VNumber})
     if(error){
         const msg =error.details.map(el => el.message).join(',')
         throw new ExpressError(msg, 400)
@@ -55,7 +55,8 @@ router.get('/city/:id', catchAsync(async (req, res)=>{
 
 router.get('/map',validatemap, catchAsync( async (req, res)=>{
     if(Object.keys(req.query).length === 1){
-        const g = new Date()
+        const a = new Date()
+        const g = new Date(a)
         y = String(g.getFullYear())
         m = ("0" + String(g.getMonth()+1)).slice(-2)
         d = ("0" + String(g.getDate())).slice(-2)

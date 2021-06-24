@@ -40,75 +40,75 @@
 
 .qpll {
     position: absolute;
-    left: 15%;
-    top: 20%;
+    left: 12%;
+    top: 18%;
     border-radius: 18px;
 }
 
 .qplm{
     position: absolute;
-    left: 29%;
-    top: 20%;
+    left: 27%;
+    top: 18%;
     border-radius: 18px;
 }
 .qpln{
     position: absolute;
     left: 42%;
-    top: 20%;
+    top: 18%;
     border-radius: 18px;
 }
 .qplo{
     position: absolute;
-    right: 42%;
-    top: 20%;
+    left: 56%;
+    top: 18%;
     border-radius: 18px;
 }
 .qplp{
     position: absolute;
-    right: 29%;
-    top: 20%;
+    left: 71%;
+    top: 18%;
     border-radius: 18px;
 }
 .qplq{
     position: absolute;
-    right: 15%;
-    top: 20%;
+    left: 85%;
+    top: 18%;
     border-radius: 18px;
 }
 .qplr{
     position: absolute;
-    left: 15%;
-    bottom: 25%;
+    left: 12%;
+    bottom: 18%;
     border-radius: 18px;
 }
 .qpls{
     position: absolute;
-    left: 29%;
-    bottom: 25%;
+    left: 27%;
+    bottom: 18%;
     border-radius: 18px;
 }
 .qplt{
     position: absolute;
-    left: 43%;
-    bottom: 25%;
+    left: 42%;
+    bottom: 18%;
     border-radius: 18px;
 }
 .qplu{
     position: absolute;
-    right: 41%;
-    bottom: 25%;
+    left: 56%;
+    bottom: 18%;
     border-radius: 18px;
 }
 .qplv{
     position: absolute;
-    right: 29%;
-    bottom: 25%;
+    left: 71%;
+    bottom: 18%;
     border-radius: 18px;
 }
 .qplw{
     position: absolute;
-    right: 15%;
-    bottom: 25%;
+    left: 85%;
+    bottom: 18%;
     border-radius: 18px;
 }
 .rty {

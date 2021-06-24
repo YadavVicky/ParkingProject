@@ -3,26 +3,27 @@
         <h1 class="ppq text-center"> Log In </h1>
         <div class="col-md-6 offset-md-3 col-xl-4 offset-xl-4">
           <div class="card shadow" id="lla">
-           <div class="card-body">
+           <div class="card-body" style="background-color: #000000;
+           background-image: linear-gradient(147deg, #000000 0%, #04619f 74%);">
             <form class="mb-3 validate-forms" action="/login" method="POST" novalidate>
               <div class="mb-3">
-                  <label class="ppq form-label" for="username">Email  <sup class="sua">*</sup> </label>
+                  <label class="ppq form-label text-white" for="username">Email  <sup class="sua">*</sup> </label>
                   <input class="form-control" type="email" name="username" placeholder="Email" autofocus required>
                   <div class="invalid-feedback">
                       Please enter email
                     </div>
               </div>
               <div class="mb-3">
-                  <label class="ppq form-label" for="password">Password  <sup class="sua">*</sup> </label>
+                  <label class="ppq form-label text-white" for="password">Password  <sup class="sua">*</sup> </label>
                   <input class="form-control" type="password" name="password" placeholder="Password" required>
                   <div class="invalid-feedback">
                       Please enter password
                     </div>
               </div>
-              <button class="btn btn-success">Submit</button>   
+              <button class="btn btn-success">Log In</button>   
           </form>
           <div>
-              <p class="ppq">New User?.....</p>
+              <p class="ppq text-white">New User?.....</p>
               <a class="btn btn-primary" href="\signup">Sign Up</a>
           </div>
            </div>

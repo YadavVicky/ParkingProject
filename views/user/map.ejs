@@ -112,7 +112,7 @@
                             <div class="card text-dark border-primary">
                             <!-- <div class="card-header"></div> -->
                             <div class="row card-body" style="max-height: 70px;">
-                                <div class="col-6"> name:- <%= park.parkingname  %></div>
+                                <div class="col-6"> <%= park.parkingname  %></div>
                                 <div class="col-3"> space: <%= (Number(park.spots) - slota[j])   %> </div>
                                 <div class="col-3">
                                     <form action="/booking/<%= park._id %>" method="GET">

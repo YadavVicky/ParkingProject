@@ -121,16 +121,24 @@ router.get('/booking/:id', isLoggedIn, catchAsync ( async (req, res)=>{
     k = Date.parse(k) //time-out
     for(var j = 0; j < details.length; j++){
         if(details[j]['timeIn'] <= l && details[j]['timeOut'] >= l){
+            if(!slota.includes(details[j]['slot'])){
             slota.push(details[j]['slot']);
+            }
         }else{
             if(details[j]['timeIn'] <= k && details[j]['timeOut'] >= k){
+                if(!slota.includes(details[j]['slot'])){
                 slota.push(details[j]['slot']);
+                }
             }else{
                 if(l <= details[j]['timeIn'] && k >= details[j]['timeIn']){
+                    if(!slota.includes(details[j]['slot'])){
                     slota.push(details[j]['slot']);
+                    }
                 }else{
                     if(l <= details[j]['timeOut'] && k >= details[j]['timeOut']){
+                        if(!slota.includes(details[j]['slot'])){
                         slota.push(details[j]['slot']);
+                        }
                     }
                 }
             }
@@ -165,7 +173,6 @@ router.post('/booking/:id', isLoggedIn, validateParking ,catchAsync ( async (req
 
 router.get('/profile/:id',isLoggedIn ,catchAsync(async(req, res)=>{
     // const b = moment(1624287510575).format('Do MMMM YYYY, h:mm:ss a')
-    // console.log(b.split(","))
     UDT = []
     const { id } = req.params
     const cust = await userLog.findById(id).populate('carDetails');

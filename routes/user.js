@@ -75,12 +75,15 @@ router.get('/map',validatemap, catchAsync( async (req, res)=>{
     slota = []
     timeI = []
     timeO = []
+    checking = []
     var n = q + " " + J[0] + ":" + J[1] + ":00" + " " + "GMT+05:30";
     var k = h + " " + K[0] + ":" + K[1] + ":00" + " " + "GMT+05:30";
     n = Date.parse(n) //time-in
     k = Date.parse(k) //time-out
-    const { location } = req.query;
-    const l = req.query['location']
+    var { location } = req.query;
+    location = location.charAt(0).toUpperCase() + location.slice(1)
+    var l = req.query['location']
+    l = l.charAt(0).toUpperCase() + l.slice(1)
     const city = await Cities.find({'name': location}).populate('ownerList')
     const da = city[0]['ownerList']
     for(let a of da){
@@ -88,22 +91,34 @@ router.get('/map',validatemap, catchAsync( async (req, res)=>{
         count = 0
         for(let b of uu){
             const found = await parkingLot.findById(b)
-        if(found['timeIn'] <= n && found['timeOut'] >= n){
-            count++
-        }else{
-            if(found['timeIn'] <= k && found['timeOut'] >= k){
-                count++
+            if(found['timeIn'] <= n && found['timeOut'] >= n){
+                if(!checking.includes(found['slot'])){
+                    checking.push(found['slot']);
+                    count++;
+                }
             }else{
-                if(n <= found['timeIn'] && k >= found['timeIn']){
-                    count++
+                if(found['timeIn'] <= k && found['timeOut'] >= k){
+                    if(!checking.includes(found['slot'])){
+                        checking.push(found['slot']);
+                        count++;
+                    }
                 }else{
-                    if(n <= found['timeOut'] && k >= found['timeOut']){
-                        count++
+                    if(n <= found['timeIn'] && k >= found['timeIn']){
+                        if(!checking.includes(found['slot'])){
+                            checking.push(found['slot']);
+                            count++
+                        }
+                    }else{
+                        if(n <= found['timeOut'] && k >= found['timeOut']){
+                            if(!checking.includes(found['slot'])){
+                                checking.push(found['slot']);
+                                count++;
+                            }
+                        }
                     }
                 }
             }
-        }
-        }
+            }
         slota.push(count)
     }
     res.render('user/map', { city, q, h, K, J, l, slota})
@@ -113,6 +128,7 @@ router.get('/booking/:id', isLoggedIn, catchAsync ( async (req, res)=>{
     const { id } = req.params;
     const { G } = req.query;
     slota = []
+    license = []
     const foundO = await ownerLog.findById(id).populate('carDetails');
     details = foundO['carDetails']
     var l = G['date1'] + " " + G['hr1'] + ":" + G['min1'] + ":00" + " " + "GMT+05:30";
@@ -121,21 +137,25 @@ router.get('/booking/:id', isLoggedIn, catchAsync ( async (req, res)=>{
     k = Date.parse(k) //time-out
     for(var j = 0; j < details.length; j++){
         if(details[j]['timeIn'] <= l && details[j]['timeOut'] >= l){
+            license.push(details[j]['vehicle'])
             if(!slota.includes(details[j]['slot'])){
-            slota.push(details[j]['slot']);
+                slota.push(details[j]['slot']);
             }
         }else{
             if(details[j]['timeIn'] <= k && details[j]['timeOut'] >= k){
+                license.push(details[j]['vehicle'])
                 if(!slota.includes(details[j]['slot'])){
                 slota.push(details[j]['slot']);
                 }
             }else{
                 if(l <= details[j]['timeIn'] && k >= details[j]['timeIn']){
+                    license.push(details[j]['vehicle'])
                     if(!slota.includes(details[j]['slot'])){
                     slota.push(details[j]['slot']);
                     }
                 }else{
                     if(l <= details[j]['timeOut'] && k >= details[j]['timeOut']){
+                        license.push(details[j]['vehicle'])
                         if(!slota.includes(details[j]['slot'])){
                         slota.push(details[j]['slot']);
                         }
@@ -146,7 +166,7 @@ router.get('/booking/:id', isLoggedIn, catchAsync ( async (req, res)=>{
     }
     a = G['date1'] + "at" + G['hr1'] + ":" + G['min1']
     b = G['date2'] + "at" + G['hr2'] + ":" + G['min2']
-    res.render("user/book", { G, a, b, foundO, slota});
+    res.render("user/book", { G, a, b, foundO, slota, license});
 }));
 
 router.post('/booking/:id', isLoggedIn, validateParking ,catchAsync ( async (req, res)=>{

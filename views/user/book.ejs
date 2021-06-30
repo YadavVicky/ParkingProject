@@ -44,10 +44,10 @@
                           </div>
                           <div class="row mb-2 items-align-center">
                             <div class="col-md-8">
-                              <label for="time" class="col-form-label"><strong>Vehicle Number </strong></label>
+                              <label for="time" class="col-form-label"><strong>Vehicle Number</strong> (Please write car number without space)</label>
                             </div>
                             <div class="col-md-4">
-                              <input type="text" id="" size="5" style="letter-spacing: 0.25em;" name="VNumber" placeholder="Vehicle Number" class="form-control form-control-sm" required>
+                              <input type="text" class="form-control form-control-sm" id="vehicleNo" size="5" style="letter-spacing: 0.25em;" minlength="9" maxlength="10" name="VNumber" placeholder="Vehicle Number" oninput="check123()" required>
                             </div>
                         </div>
                           <div class="row mb-2 items-align-center">
@@ -124,7 +124,15 @@
         </div>
       </footer>
 <script> const sl = <%-  JSON.stringify(slota) %> </script>
+ <script> const license = <%-  JSON.stringify(license) %> </script>
 <script>
+  function check123(){
+      var d = document.getElementById('vehicleNo').value
+      if(license.includes(d)){
+        document.getElementById('vehicleNo').value = ""
+        alert("This Vehicle Number is already Registered in this duration")
+      }
+    }
     function aeza(){
       for(var l = 0; l<sl.length; l++){
         var i = "No."+String(sl[l])

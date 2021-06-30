@@ -62,7 +62,24 @@ router.get('/map',validatemap, catchAsync( async (req, res)=>{
         d = ("0" + String(g.getDate())).slice(-2)
         h = ("0" + String(g.getHours())).slice(-2)
         mi =("0" + String(g.getMinutes())).slice(-2)
-        J = [h,mi]
+        hr = Number(h)
+        if(0 <= Number(mi) && Number(mi) <= 15){
+            mi = "15"
+        }else{
+            if(15 < Number(mi) && Number(mi) <= 30){
+                mi = "30"
+            }else{
+                if(30 < Number(mi) && Number(mi) <= 45 ){
+                    mi = "45"
+                }else{
+                    if(45 < Number(mi) && Number(mi) <= 59){
+                        hr += 1
+                        mi = "00"
+                    }
+                }
+            }
+        }
+        J = [hr,mi]
         K = [String(Number(J[0])+1), J[1]]
         q = y + "-" + m + "-" + d
         h = q

@@ -4,7 +4,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 const userSchema = new Schema({
     name: String,
-    phone: String,
+    phone: Number,
     carDetails:[{
         type: Schema.Types.ObjectId,
         ref: 'ParkingLot'

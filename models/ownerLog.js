@@ -4,7 +4,7 @@ const passportLocalMongoose = require('passport-local-mongoose');
 
 const ownerSchema = new Schema({
     name: String,
-    phone: String,
+    phone: Number,
 	parkingname: {
 		type: String,
 		default: null

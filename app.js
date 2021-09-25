@@ -26,15 +26,12 @@ const ownerroutes = require('./routes/owner');
 const userroutes = require('./routes/user');
 
 //mongodb code
-mongoose.connect('mongodb+srv://myParking:2QZXG7JuJyKLb8CM@myparking.fjy4n.mongodb.net/myParking?retryWrites=true&w=majority',{
+mongoose.connect('MongoDB URL',{
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false
 });
-
-
-//mongo db atlas db access password: 2QZXG7JuJyKLb8CM 
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, 'Connection error:'));

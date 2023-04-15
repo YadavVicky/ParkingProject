@@ -26,7 +26,7 @@ const ownerroutes = require('./routes/owner');
 const userroutes = require('./routes/user');
 
 //mongodb code
-mongoose.connect('MongoDB URL',{
+mongoose.connect('mongodb+srv://myParking:2QZXG7JuJyKLb8CM@myparking.fjy4n.mongodb.net/myParking?retryWrites=true&w=majority',{
     useNewUrlParser: true,
     useCreateIndex: true,
     useUnifiedTopology: true,

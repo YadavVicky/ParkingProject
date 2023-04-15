@@ -44,7 +44,7 @@ const validatemap = (req, res, next) => {
 
 router.get('/city', catchAsync(async (req, res) => { 
     const cities = await Cities.find({})
-    res.render('user/all',{ cities, aeza });
+    res.render('user/all',{ cities });
 }));
 
 router.get('/city/:id', catchAsync(async (req, res)=>{
